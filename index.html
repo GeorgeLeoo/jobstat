@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .item {
+      width: 200px;
+    }
+
+    .yes {
+      float: left;
+      display: none;
+    }
+
+    .no {
+      float: left;
+    }
+
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      padding: 10px 0;
+    }
+
+
+    .box::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+
+    i {
+      display: inline-block;
+      padding: 20px 0;
+    }
+
+    .title {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- browserify app.js -o dist/bundle.js -->
+
+  <h1>作业统计</h1>
+  <i>文件名格式：2018140544_xxx，使用前请刷新页面</i>
+  <div>
+    <input type="file" multiple id="files">
+    <button id="stat">统计</button>
+  </div>
+
+  <div class="box">
+    <h3 class="title">
+      共
+      <span id="total">0</span>
+      人，
+      <span id="rest">0</span>
+      人未交
+    </h3>
+    <div class="item yes">
+      <h3>已交</h3>
+      <ul id="list_yes"></ul>
+    </div>
+    <div class="item no">
+      <h3>未交</h3>
+      <ul id="list_no"></ul>
+    </div>
+  </div>
+
+
+  <script src="dist/bundle.js"></script>
+</body>
+
+</html>
