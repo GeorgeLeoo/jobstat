@@ -1,7 +1,6 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const data = (require('./data.json'));
 const total = data.length;
-console.log(total);
 
 let names = [];
 const file = document.querySelector('#files');
@@ -10,17 +9,20 @@ file.addEventListener('change', function (event) {
   const files = event.target.files;
   for (let val of files) {
     let vals = val.name.split("_");
-    names.push(vals[1].split(".")[0])
+    names.push(vals[1].split(".")[0].trim())
   }
+  // console.log(names);
+  
 }, false)
+
 
 const btn_stat = document.querySelector('#stat');
 btn_stat.addEventListener('click', function () {
   let res_yes = data.filter((val) => {
-    return names.indexOf(val) > -1;
+    return names.indexOf(val.trim()) > -1;
   });
   let res_no = data.filter((val) => {
-    return names.indexOf(val) === -1;
+    return names.indexOf(val.trim()) === -1;
   });
 
   let html_yes = "";

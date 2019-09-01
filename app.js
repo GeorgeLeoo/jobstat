@@ -1,6 +1,5 @@
 const data = (require('./data.json'));
 const total = data.length;
-console.log(total);
 
 let names = [];
 const file = document.querySelector('#files');
@@ -9,17 +8,20 @@ file.addEventListener('change', function (event) {
   const files = event.target.files;
   for (let val of files) {
     let vals = val.name.split("_");
-    names.push(vals[1].split(".")[0])
+    names.push(vals[1].split(".")[0].trim())
   }
+  // console.log(names);
+  
 }, false)
+
 
 const btn_stat = document.querySelector('#stat');
 btn_stat.addEventListener('click', function () {
   let res_yes = data.filter((val) => {
-    return names.indexOf(val) > -1;
+    return names.indexOf(val.trim()) > -1;
   });
   let res_no = data.filter((val) => {
-    return names.indexOf(val) === -1;
+    return names.indexOf(val.trim()) === -1;
   });
 
   let html_yes = "";
